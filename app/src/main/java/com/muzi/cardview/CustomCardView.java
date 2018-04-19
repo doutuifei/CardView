@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * Created by muzi on 2018/4/19.
@@ -34,11 +35,19 @@ public class CustomCardView extends ViewGroup {
 
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.item_view1, this, true);
-        LayoutInflater.from(getContext()).inflate(R.layout.item_view2, this, true);
-        setOnClickListener(new OnClickListener() {
+        View inflate = LayoutInflater.from(getContext()).inflate(R.layout.item_view2, this, true);
+        View view1 = inflate.findViewById(R.id.text1);
+        view1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggle();
+                Toast.makeText(getContext(), "text1", Toast.LENGTH_SHORT).show();
+            }
+        });
+        View view2 = inflate.findViewById(R.id.text2);
+        view2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "text2", Toast.LENGTH_SHORT).show();
             }
         });
     }
